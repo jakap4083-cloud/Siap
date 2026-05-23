@@ -1,0 +1,5 @@
+<?php
+if (!empty($_SESSION['user_id'])) redirect('index.php?page=home');
+$error = flash_get('error');
+?>
+<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="assets/css/app.css"></head><body><main class="app"><h1>Daftar NOXARA</h1><?php if($error):?><p class="danger"><?=e($error)?></p><?php endif;?><form method="post" action="actions/auth/register.php"><input type="hidden" name="csrf" value="<?=e(csrf_token())?>"><input name="username" placeholder="Username" required><input type="email" name="email" placeholder="Email" required><input name="phone" placeholder="Nomor HP" required><input type="password" name="password" placeholder="Password" required><input type="password" name="password_confirm" placeholder="Konfirmasi Password" required><input name="referral_code" placeholder="Kode Referral"><label><input type="checkbox" name="agree" value="1" required> Setuju kebijakan</label><button>Registrasi</button></form><a href="index.php?page=login">Sudah punya akun? Login</a></main></body></html>
